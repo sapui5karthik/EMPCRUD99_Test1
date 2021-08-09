@@ -1,0 +1,50 @@
+<mvc:View controllerName="zsapui5proj99.ZSPUI5_Proj99_EMPCrud.controller.Object" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form">
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false" busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+		<semantic:titleHeading>
+			<Title text="Details"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<ObjectNumber/>
+		</semantic:headerContent>
+		<semantic:content>
+			<Panel>
+				<content>
+					<Button text="back" press="_toworklist" />
+					<Table visible="true" id="emptable" items="{path:'emp>/'}" growing="true" growingThreshold="30" growingScrollToLoad="false">
+						<columns>
+							<Column>
+								<Text text="Data"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<VBox>
+										<items>
+											<ObjectStatus text="{emp>EMPID}"/>
+											<ObjectStatus state="Success" text="{emp>EMPNAME}"/>
+											<ObjectStatus state="Warning" text="{emp>EMPDES}"/>
+											<ObjectStatus state="Error" text="{path:'emp>EMPHIREDATE',formatter:'.formatter.date2display'}"/>
+											<ObjectStatus state="{=${emp>EMPTERMINATED}==='Y'?'Error':'Success'}" text="{emp>EMPTERMINATED}"/>
+										</items>
+									</VBox>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Panel>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{objectView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:SemanticPage>
+</mvc:View>

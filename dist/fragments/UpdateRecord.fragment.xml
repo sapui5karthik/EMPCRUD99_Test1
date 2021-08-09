@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" 	xmlns:f="sap.ui.layout.form">
+	<Dialog  title="Update Record">
+		<content>
+			
+			<f:SimpleForm id="SimpleFormDisplay354wide1">
+			<f:content>
+				<Label text="EMPID" /><Input id="EMPID1" width="auto" enabled="false"/>
+				
+				<Label text="EMPNAME" /><Input id="EMPNAME1" width="auto"/>
+				<Label text="EMPDES" />	<Input id="EMPDES1" width="auto"/>
+				<Label text="EMPHIREDATE" />	<DatePicker id="EMPHIREDATE1" width="auto"/>
+				<Label text="EMPTERMINATED" />	
+					<Select id="EMPTERMINATED1"  width="auto" selectedKey="N">
+						<core:Item key="N" text="N" />
+						<core:Item key="Y" text="Y" />
+						
+					</Select>
+			</f:content>
+		</f:SimpleForm>	
+			
+		</content>
+		<beginButton>
+			<Button text="Update Record" press="_updaterecord" />
+			
+		</beginButton>
+		<endButton>
+			<Button text="Close" press="_closeupdaterecord" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,67 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" controllerName="zsapui5proj99.ZSPUI5_Proj99_EMPCrud.controller.Worklist">
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false">
+		<semantic:titleHeading>
+			<Title text="{i18n>worklistTitle}"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<Panel>
+				<content>
+					<Toolbar>
+						
+						<Button text="Create Record" press="_opencreaterecord" type="Emphasized"/>
+					</Toolbar>
+					<Table id="emptable" items="{path:'emp>/'}" growing="true" growingThreshold="30" growingScrollToLoad="false">
+						<columns>
+							<Column width="25px">
+								<Text text="Upd"/>
+							</Column>
+							<Column>
+								<Text text="EMPID"/>
+							</Column>
+							<Column>
+								<Text text="EMPNAME"/>
+							</Column>
+							<Column>
+								<Text text="EMPDES"/>
+							</Column>
+							<Column>
+								<Text text="EMPHIREDATE"/>
+							</Column>
+							<Column>
+								<Text text="EMPTERMINATED"/>
+							</Column>
+							<Column>
+								<Text text="Action"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation" press="_toObjectview">
+								<cells>
+									<RadioButton select="_openupdatefragment"/>
+									<ObjectStatus state="Indication01" invert="true" text="{emp>EMPID}"/>
+									<ObjectStatus state="Success" text="{emp>EMPNAME}"/>
+									<ObjectStatus state="Warning" text="{emp>EMPDES}"/>
+									<ObjectStatus state="Error" text="{path:'emp>EMPHIREDATE',formatter:'.formatter.date2display'}"/>
+									<ObjectStatus state="{=${emp>EMPTERMINATED}==='Y'?'Error':'Success'}" text="{emp>EMPTERMINATED}"/>
+									<Button icon="sap-icon://delete" type="Reject"
+									visible="{=${emp>EMPTERMINATED}==='Y'? true : false}"
+									press="_deleterecord"
+									/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Panel>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{worklistView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:SemanticPage>
+</mvc:View>
