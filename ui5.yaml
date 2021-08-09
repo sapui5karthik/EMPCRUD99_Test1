@@ -1,0 +1,26 @@
+specVersion: "2.4"
+metadata:
+  name: zsapui5proj99.zspui5_proj99_empcrud
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: http://103.207.171.202:8021
+            client: "800"
+            destination: CFNS420
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: 1.92.2
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp

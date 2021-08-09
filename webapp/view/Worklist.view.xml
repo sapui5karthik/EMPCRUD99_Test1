@@ -12,7 +12,7 @@
 					</Toolbar>
 					<Table id="emptable" items="{path:'emp>/'}" growing="true" growingThreshold="30" growingScrollToLoad="false">
 						<columns>
-							<Column width="25px">
+							<Column width="50px">
 								<Text text="Upd"/>
 							</Column>
 							<Column>
@@ -38,7 +38,7 @@
 							<ColumnListItem type="Navigation" press="_toObjectview">
 								<cells>
 									<RadioButton select="_openupdatefragment"/>
-									<ObjectStatus state="Indication01" invert="true" text="{emp>EMPID}"/>
+									<ObjectStatus state="Indication01" inverted="true" text="{emp>EMPID}"/>
 									<ObjectStatus state="Success" text="{emp>EMPNAME}"/>
 									<ObjectStatus state="Warning" text="{emp>EMPDES}"/>
 									<ObjectStatus state="Error" text="{path:'emp>EMPHIREDATE',formatter:'.formatter.date2display'}"/>

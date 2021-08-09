@@ -1,0 +1,33 @@
+specVersion: "2.4"
+metadata:
+  name: zsapui5proj99.zspui5_proj99_empcrud
+type: application
+framework:
+  name: SAPUI5
+  version: 1.92.2
+  libraries:
+    - name: sap.ui.core
+    - name: sap.m
+    - name: sap.f
+    - name: sap.ushell
+    - name: sap.collaboration
+    - name: sap.ui.comp
+    - name: sap.ui.generic.app
+    - name: sap.ui.table
+    - name: themelib_sap_fiori_3
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: http://103.207.171.202:8021
+            client: "800"
+            destination: CFNS420
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
